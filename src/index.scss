@@ -68,6 +68,11 @@ body {
       margin: 0;
     }
   }
+  .header__info {
+    p {
+      opacity: .5;
+    }
+  }
   .header__right {
     display: flex;
     /* flex-direction: column; */
