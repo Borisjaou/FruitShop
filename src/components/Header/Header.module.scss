@@ -1,0 +1,46 @@
+@import '../index.scss';
+.logo {
+  width: 70px;
+  height: 70px;
+}
+
+.user {
+  @extend %standart-size;
+}
+.cart {
+  @extend %standart-size;
+  margin-right: 15px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eaeaea;
+  padding: 40px;
+  .header__left {
+    display: flex;
+    align-items: center;
+    h3 {
+      margin: 0;
+      text-transform: uppercase;
+    }
+    p {
+      margin: 0;
+    }
+  }
+  .header__info {
+    p {
+      opacity: .5;
+    }
+  }
+  .header__right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    li {
+      margin-right: 30px;
+
+    }
+  }
+}
