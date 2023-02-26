@@ -16,4 +16,7 @@
 }
 .cardContainer{
   display: flex;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }

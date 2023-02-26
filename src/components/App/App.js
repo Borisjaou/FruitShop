@@ -1,26 +1,44 @@
+import React from 'react';
 import styles from './App.module.scss';
 import Header from "../Header/Header";
 import Card from "../Card/Card";
-import { fruitsArr } from "../Utils/Utils"
-console.log(fruitsArr)
+import SideMenu from "../SideMenu/SideMenu";
+/* import { fruitsArr } from "../Utils/Utils" */
 
 function App() {
-  const addItem = () => {
-    console.log('lol')
+  const [cardOpened, setCartOpened] = React.useState(false);
+  const [items, setItems] = React.useState([]);
+  const [cartItems, setCartItems] = React.useState([])
+
+  React.useEffect(() => {
+    fetch('https://63f5f0e79daf59d1ad7e8178.mockapi.io/fruits/items')
+      .then((res) => {
+        return res.json();
+      })
+      .then((json) => {
+        setItems(json);
+      })
+  }, [])
+
+  const addItem = (obj) => {
+    setCartItems((prev) => [...prev, obj])
+
   }
+
   return (
     <div className={styles.wrapper}>
-      <Header />
+      {cardOpened && <SideMenu items={cartItems} onClose={() => setCartOpened(false)} />}
+      <Header onClickCart={() => setCartOpened(true)} />
       <div className={styles.content}>
         <h1>All you need is fruits</h1>
       </div>
       <div className={styles.cardContainer}>
-        {fruitsArr.map((i) =>
+        {items.map((i) =>
           <Card
             name={i.name}
             price={i.price}
             image={i.image}
-            onClick={addItem}
+            onAddItem={(obj) => addItem(obj)}
           />
         )}
       </div>

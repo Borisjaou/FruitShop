@@ -3,7 +3,7 @@ import logo from '../images/logo.svg';
 import shoppingCart from '../images/shoppingCart.svg';
 import userIcon from '../images/user.svg';
 
-function Header() {
+function Header(props) {
   return (
     <header className={styles.header}>
       <div className={styles.header__left}>
@@ -14,7 +14,7 @@ function Header() {
         </div>
       </div>
       <ul className={styles.header__right}>
-        <li>
+        <li onClick={props.onClickCart}>
           <img className={styles.cart} src={shoppingCart} alt="shopping cart" />
           <span>1000 won</span>
         </li>

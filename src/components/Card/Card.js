@@ -1,26 +1,34 @@
+import React from 'react';
 import styles from './Card.module.scss';
-import addButton from '../images/add.svg'
+import addButton from '../images/add.svg';
+import addButtonChecked from '../images/added.svg';
 
 
-function Card(props) {
+function Card({ image, name, price, onAddItem }) {
+  const [isAdded, setIsAdded] = React.useState(false);
+
+  const changeAddButton = isAdded ? addButtonChecked : addButton;
+
+  const getAdded = () => {
+    onAddItem({ image, name, price });
+    setIsAdded(!isAdded);
+  }
+
 
   return (
     <div className={styles.card}>
-      <img className={styles.photo} src={props.image} alt={props.name} />
-      <h5>{props.name}</h5>
+      <img className={styles.photo} src={image} alt={name} />
+      <h5>{name}</h5>
       <div className={styles.info}>
-        <div className=
-          {styles.cardprice
-          }>
+        <div className={styles.cardprice}>
           <span>Price:</span>
-          <b>{props.price} won</b>
+          <b>{price} won</b>
         </div>
-        <button className={styles.button} onClick={props.onClick}>
-          <img className={styles.item} src={addButton} alt="add" />
-        </button>
+        <img className={styles.item} onClick={getAdded} src={changeAddButton} alt="add" />
       </div>
     </div>
   )
 }
 
 export default Card;
+

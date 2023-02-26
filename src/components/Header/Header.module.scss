@@ -9,6 +9,7 @@
 }
 .cart {
   @extend %standart-size;
+  cursor: pointer;
   margin-right: 15px;
 }
 
